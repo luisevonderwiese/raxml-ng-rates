@@ -62,6 +62,7 @@ void Options::set_default_outfiles()
   set_default_outfile(outfile_names.asr_probs, "ancestralProbs");
   set_default_outfile(outfile_names.asr_states, "ancestralStates");
   set_default_outfile(outfile_names.site_loglh, "siteLH");
+  set_default_outfile(outfile_names.site_rate_loglh, "siterateLH");
   set_default_outfile(outfile_names.tmp_best_tree, "lastTree.TMP");
   set_default_outfile(outfile_names.tmp_ml_trees, "mlTrees.TMP");
   set_default_outfile(outfile_names.tmp_bs_trees, "bootstraps.TMP");
@@ -426,8 +427,8 @@ std::ostream& operator<<(std::ostream& stream, const Options& opts)
     stream << "general: " << opts.lh_epsilon << ", ";
     stream << "brlen-triplet: " << opts.lh_epsilon_brlen_triplet;
     stream << endl;
-    
-    if (opts.command == Command::search || opts.command == Command::adaptive || 
+
+    if (opts.command == Command::search || opts.command == Command::adaptive ||
         opts.command == Command::all || opts.command == Command::bootstrap)
     {
       if (opts.spr_radius > 0)
@@ -514,7 +515,3 @@ std::ostream& operator<<(std::ostream& stream, const Options& opts)
 
   return stream;
 }
-
-
-
-
